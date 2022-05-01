@@ -15,7 +15,6 @@ Imports:
     pillar,
     purrr,
     rlang,
-    utf8,
     vctrs
 URL: https://github.com/UchidaMizuki/econutil
 BugReports: https://github.com/UchidaMizuki/econutil/issues
