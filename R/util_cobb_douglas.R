@@ -1,13 +1,32 @@
 #' @export
-util_cobb_douglas <- function(efficiency = NA_real_,
-                              weights = double()) {
-  new_util_homothetic(substitution = NA_real_,
-                      efficiency = efficiency,
-                      weights = weights,
-                      class = "util_cobb_douglas")
+util_cobb_douglas <- function() {
+  f <- function(efficiency, weights, amounts) {
+    efficiency * prod(amounts ^ weights)
+  }
+
+  new_util(f,
+           efficiency = NA_real_,
+           weights = double(),
+           class = "util_cobb_douglas")
 }
 
 #' @export
-vec_ptype_abbr.util_cobb_douglas <- function(x, ...) {
+util_calibrate.util_cobb_douglas <- function(x, prices, amounts, ...) {
+  weights <- prices * amounts
+  weights <- weights / sum(weights)
+
+  x$weights <- weights
+  x$efficiency <- sum(prices * amounts) / prod(amounts ^ weights)
+  x
+}
+
+#' @export
+util_demand_marshall.util_cobb_douglas <- function(x, prices, income, ...) {
+  weights <- x$weights
+  income * weights / sum(weights) / prices
+}
+
+#' @export
+obj_sum.util_cobb_douglas <- function(x) {
   "Cobb-Douglas"
 }

@@ -1,13 +1,28 @@
 #' @export
-util_linear <- function(efficiency = NA_real_,
-                        weights = double()) {
-  new_util_homothetic(substitution = NA_real_,
-                      efficiency = efficiency,
-                      weights = weights,
-                      class = "util_linear")
+util_linear <- function() {
+  f <- function(weights, amounts) {
+    sum(weights * amounts)
+  }
+
+  new_util(f,
+           weights = double(),
+           class = "util_linear")
 }
 
 #' @export
-vec_ptype_abbr.util_linear <- function(x, ...) {
+util_calibrate.util_linear <- function(x, prices, amounts, ...) {
+  x$weights <- prices
+  x
+}
+
+#' @export
+util_demand_marshall.util_linear <- function(x, prices, income, ...) {
+  out <- income / prices
+  out[-which.max(x$weights / prices)] <- 0
+  out
+}
+
+#' @export
+obj_sum.util_linear <- function(x) {
   "Linear"
 }
