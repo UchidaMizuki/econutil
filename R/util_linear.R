@@ -4,9 +4,9 @@ util_linear <- function() {
     sum(weights * amounts)
   }
 
-  new_util(f,
-           weights = double(),
-           class = "util_linear")
+  new_util_homothetic(f,
+                      weights = double(),
+                      class = "util_linear")
 }
 
 #' @export

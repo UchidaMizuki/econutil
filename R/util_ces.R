@@ -4,11 +4,11 @@ util_ces <- function(substitution) {
     efficiency * sum(weights * amounts ^ substitution) ^ (1 / substitution)
   }
 
-  new_util(f,
-           substitution = substitution,
-           efficiency = NA_real_,
-           weights = double(),
-           class = "util_ces")
+  new_util_homothetic(f,
+                      substitution = substitution,
+                      efficiency = NA_real_,
+                      weights = double(),
+                      class = "util_ces")
 }
 
 #' @export

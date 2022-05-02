@@ -4,9 +4,9 @@ util_leontief <- function() {
     min(amounts / weights)
   }
 
-  new_util(f,
-           weights = double(),
-           class = "util_leontief")
+  new_util_homothetic(f,
+                      weights = double(),
+                      class = "util_leontief")
 }
 
 #' @export

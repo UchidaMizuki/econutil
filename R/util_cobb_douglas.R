@@ -4,10 +4,10 @@ util_cobb_douglas <- function() {
     efficiency * prod(amounts ^ weights)
   }
 
-  new_util(f,
-           efficiency = NA_real_,
-           weights = double(),
-           class = "util_cobb_douglas")
+  new_util_homothetic(f,
+                      efficiency = NA_real_,
+                      weights = double(),
+                      class = "util_cobb_douglas")
 }
 
 #' @export
