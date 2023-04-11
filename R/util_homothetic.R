@@ -1,13 +1,13 @@
 #' @export
 new_util_homothetic <- function(f,
                                 substitution = NULL,
-                                efficiency = NULL,
-                                weights = NULL, ...,
+                                efficiency = NA_real_,
+                                weights = double(), ...,
                                 class = character()) {
   args <- list(substitution = substitution,
                efficiency = efficiency,
                weights = weights)
-  args <- purrr::discard(args, is.null)
+  args <- purrr::compact(args)
 
   new_utility(f, args, ...,
               class = c(class, "util_homothetic"))

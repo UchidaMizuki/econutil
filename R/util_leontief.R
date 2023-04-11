@@ -1,17 +1,19 @@
 #' @export
 util_leontief <- function() {
-  f <- function(weights, amounts) {
-    min(amounts / weights)
+  f <- function(efficiency, weights, amounts) {
+    efficiency * min(amounts / weights)
   }
 
   new_util_homothetic(f,
+                      efficiency = NA_real_,
                       weights = double(),
                       class = "util_leontief")
 }
 
 #' @export
 util_calibrate.util_leontief <- function(x, prices, amounts, ...) {
-  x$weights <- amounts / sum(prices * amounts)
+  x$weights <- amounts / sum(amounts)
+  x$efficiency <- sum(prices * amounts) / min(amounts / x$weights)
   x
 }
 
