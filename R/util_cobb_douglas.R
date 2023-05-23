@@ -1,7 +1,7 @@
 #' @export
 util_cobb_douglas <- function() {
-  f <- function(efficiency, weights, amounts) {
-    efficiency * prod(amounts ^ weights)
+  f <- function(efficiency, weights, quantities) {
+    efficiency * prod(quantities ^ weights)
   }
 
   new_util_homothetic(f,
@@ -11,12 +11,12 @@ util_cobb_douglas <- function() {
 }
 
 #' @export
-util_calibrate.util_cobb_douglas <- function(x, prices, amounts, ...) {
-  weights <- prices * amounts
+util_calibrate.util_cobb_douglas <- function(x, prices, quantities, ...) {
+  weights <- prices * quantities
   weights <- weights / sum(weights)
 
   x$weights <- weights
-  x$efficiency <- sum(prices * amounts) / prod(amounts ^ weights)
+  x$efficiency <- sum(prices * quantities) / prod(quantities ^ weights)
   x
 }
 

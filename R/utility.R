@@ -11,7 +11,7 @@ is_utility <- function(x) {
 }
 
 #' @export
-util_calibrate <- function(x, prices, amounts, ...) {
+util_calibrate <- function(x, prices, quantities, ...) {
   UseMethod("util_calibrate")
 }
 

@@ -1,7 +1,7 @@
 #' @export
 util_ces <- function(substitution) {
-  f <- function(substitution, efficiency, weights, amounts) {
-    efficiency * sum(weights * amounts ^ substitution) ^ (1 / substitution)
+  f <- function(substitution, efficiency, weights, quantities) {
+    efficiency * sum(weights * quantities ^ substitution) ^ (1 / substitution)
   }
 
   new_util_homothetic(f,
@@ -12,14 +12,14 @@ util_ces <- function(substitution) {
 }
 
 #' @export
-util_calibrate.util_ces <- function(x, prices, amounts, ...) {
+util_calibrate.util_ces <- function(x, prices, quantities, ...) {
   substitution <- x$substitution
 
-  weights <- prices * amounts ^ (1 - substitution)
+  weights <- prices * quantities ^ (1 - substitution)
   weights <- weights / sum(weights)
 
   x$weights <- weights
-  x$efficiency <- sum(prices * amounts) / sum(weights * amounts ^ substitution) ^ (1 / substitution)
+  x$efficiency <- sum(prices * quantities) / sum(weights * quantities ^ substitution) ^ (1 / substitution)
   x
 }
 

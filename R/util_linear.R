@@ -1,7 +1,7 @@
 #' @export
 util_linear <- function() {
-  f <- function(efficiency, weights, amounts) {
-    efficiency * sum(weights * amounts)
+  f <- function(efficiency, weights, quantities) {
+    efficiency * sum(weights * quantities)
   }
 
   new_util_homothetic(f,
@@ -11,9 +11,9 @@ util_linear <- function() {
 }
 
 #' @export
-util_calibrate.util_linear <- function(x, prices, amounts, ...) {
+util_calibrate.util_linear <- function(x, prices, quantities, ...) {
   x$weights <- prices / sum(prices)
-  x$efficiency <- sum(prices * amounts) / sum(x$weights * amounts)
+  x$efficiency <- sum(prices * quantities) / sum(x$weights * quantities)
   x
 }
 
