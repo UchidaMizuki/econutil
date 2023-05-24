@@ -34,6 +34,11 @@ util_demand_marshall.util_ces <- function(x, prices, income, ...) {
 }
 
 #' @export
-obj_sum.util_ces <- function(x) {
-  paste0("CES(", big_mark(x$substitution), ")")
+type_sum.util_ces <- function(x, ...) {
+  "CES"
+}
+
+#' @export
+obj_sum.util_ces <- function(x, ...) {
+  paste0(type_sum(x), "(", big_mark(x$substitution), ")")
 }

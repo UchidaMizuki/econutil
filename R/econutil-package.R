@@ -1,6 +1,6 @@
 #' @import rlang
 #' @import vctrs
-#' @importFrom pillar obj_sum
+#' @importFrom pillar obj_sum type_sum
 NULL
 
 #' @importFrom partialised arguments

@@ -25,6 +25,11 @@ util_demand_marshall.util_linear <- function(x, prices, income, ...) {
 }
 
 #' @export
-obj_sum.util_linear <- function(x) {
+type_sum.util_linear <- function(x, ...) {
   "Linear"
+}
+
+#' @export
+obj_sum.util_linear <- function(x, ...) {
+  type_sum(x)
 }

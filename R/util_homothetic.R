@@ -6,8 +6,8 @@ new_util_homothetic <- function(f,
                                 class = character()) {
   args <- list(substitution = substitution,
                efficiency = efficiency,
-               weights = weights)
-  args <- purrr::compact(args)
+               weights = weights) |>
+    purrr::discard(is.null)
 
   new_utility(f, args, ...,
               class = c(class, "util_homothetic"))

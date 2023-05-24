@@ -24,6 +24,11 @@ util_demand_marshall.util_leontief <- function(x, prices, income, ...) {
 }
 
 #' @export
-obj_sum.util_leontief <- function(x) {
+type_sum.util_leontief <- function(x, ...) {
   "Leontief"
+}
+
+#' @export
+obj_sum.util_leontief <- function(x, ...) {
+  type_sum(x)
 }

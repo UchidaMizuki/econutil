@@ -27,6 +27,11 @@ util_demand_marshall.util_cobb_douglas <- function(x, prices, income, ...) {
 }
 
 #' @export
-obj_sum.util_cobb_douglas <- function(x) {
+type_sum.util_cobb_douglas <- function(x, ...) {
   "Cobb-Douglas"
+}
+
+#' @export
+obj_sum.util_cobb_douglas <- function(x, ...) {
+  type_sum(x)
 }
