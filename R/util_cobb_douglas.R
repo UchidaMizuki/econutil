@@ -33,5 +33,5 @@ type_sum.util_cobb_douglas <- function(x, ...) {
 
 #' @export
 obj_sum.util_cobb_douglas <- function(x, ...) {
-  type_sum(x)
+  paste0(type_sum(x), ": ", big_mark(x$efficiency))
 }

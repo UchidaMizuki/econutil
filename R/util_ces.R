@@ -40,5 +40,5 @@ type_sum.util_ces <- function(x, ...) {
 
 #' @export
 obj_sum.util_ces <- function(x, ...) {
-  paste0(type_sum(x), "(", big_mark(x$substitution), ")")
+  paste0(type_sum(x), "(", big_mark(x$substitution), "): ", big_mark(x$efficiency))
 }

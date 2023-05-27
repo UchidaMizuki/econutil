@@ -31,5 +31,5 @@ type_sum.util_linear <- function(x, ...) {
 
 #' @export
 obj_sum.util_linear <- function(x, ...) {
-  type_sum(x)
+  paste0(type_sum(x), ": ", big_mark(x$efficiency))
 }
